@@ -1,31 +1,24 @@
 """
 Sven Nelson
 4/9/2018
-RootBot Farmware to send GPIO high to 2nd raspberry pi
+RootBot Farmware to send and recieve serial to/from 2nd raspberry pi
 """
-# Need this for GPIO in/out
-import RPi.GPIO as GPIO
+# Need this for sending serial data
+import serial as s
+from time import sleep 
 
-from time import sleep
+# Open serial connection with second raspberry pi
+ser = s.Serial("/dev/ttyS0", 115200) # Open port
 
-# Pin Definitions
-fromCameraPi = 15 
-toCameraPi = 14 
+# Send "ON" signal to initiate photo taking process
+ser.write("ON".encode())
 
-# GPIO setup
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(fromCameraPi, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
-GPIO.setup(toCameraPi, GPIO.OUT, initial = GPIO.LOW)
+# Check to see if the CameraPi has sent "OFF" to confirm photography complete
+data = ser.read(8) # read up to 32 bytes (set to 8 bytes)
 
-# Send signal HIGH on pin 14 to initiate photo taking process
-GPIO.output(toCameraPi, GPIO.HIGH)
-
-# Check to see if the CameraPi has sent a HIGH to confirm photography complete
-while GPIO.input(fromCameraPi) == 0:
-    sleep(3)
-
-# Send signal LOW on pin 14 until next time this script is run
-GPIO.output(toCameraPi, GPIO.LOW)
-		
-# At end
-GPIO.cleanup()
+complete = False
+while not complete:
+    if data is not None and "OFF" in data:
+      complete = True
+    else:
+      data = ser.read(8)

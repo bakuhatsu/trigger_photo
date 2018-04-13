@@ -25,6 +25,6 @@ from time import sleep
 
 #### Temporary fix until FarmBot adds back support for pyserial in Farmware ####
 # Send "ON" signal to initiate photo taking process
-print("RootBotCamPiON")  # make this print something unique (serial sends debugging text)
+print("RootBotCamPiON RootBotCamPiON")  # make this print something unique (serial sends debugging text)
 # Wait for second pi to finish its tasks.
 sleep(10)

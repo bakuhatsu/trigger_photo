@@ -11,8 +11,7 @@ from time import sleep
 ser = s.Serial("/dev/ttyAMA0", 115200) # Open port (was ttyS0)
 
 # Send "ON" signal to initiate photo taking process
-ser.write("RootBotCamPiON RootBotCamPiON".encode())
-#print("RootBotCamPiON RootBotCamPiON")  # make this print something unique (serial sends debugging text)
+ser.write("RootCamONRootCamON".encode())
 
 # Check to see if the CameraPi has sent "OFF" to confirm photography complete
 data = ser.read(8) # read up to 32 bytes (set to 8 bytes)

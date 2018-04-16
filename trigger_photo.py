@@ -8,7 +8,7 @@ import serial as s
 from time import sleep 
 
 # Open serial connection with second raspberry pi
-ser = s.Serial("/dev/ttyS0", 115200) # Open port
+ser = s.Serial("/dev/ttyusb0", 115200) # Open port (was ttyS0)
 
 # Send "ON" signal to initiate photo taking process
 ser.write("RootBotCamPiON RootBotCamPiON".encode())

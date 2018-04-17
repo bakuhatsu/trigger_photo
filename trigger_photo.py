@@ -14,7 +14,7 @@ ser = s.Serial("/dev/ttyAMA0", 115200) # Open port (was ttyS0)
 ser.write("RootCamONRootCamON".encode())
 
 # Check to see if the CameraPi has sent "OFF" to confirm photography complete
-data = ser.read(8) # read up to 32 bytes (set to 8 bytes)
+#data = ser.read(8) # read up to 32 bytes (set to 8 bytes) ##### TEMPORARILY COMMENTED OUT UNTIL SERIAL READ ISSUE IS SORTED #####
 
 #complete = False ##### TEMPORARILY COMMENTED OUT UNTIL SERIAL READ ISSUE IS SORTED #####
 #while not complete:

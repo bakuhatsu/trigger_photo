@@ -8,23 +8,17 @@ import serial as s
 from time import sleep 
 
 # Open serial connection with second raspberry pi
-ser = s.Serial("/dev/ttyAMA0", 115200) # Open port (was ttyS0)
+ser = s.Serial("/dev/ttyAMA0", 115200, timeout=10) # Open port (was ttyS0), gave it a 10 sec timeout if not enough bytes read.
 
 # Send "ON" signal to initiate photo taking process
 ser.write("RootCamONRootCamON".encode())
 
 # Check to see if the CameraPi has sent "OFF" to confirm photography complete
-data = ser.read(8) # read up to 32 bytes (set to 8 bytes) ##### TEMPORARILY COMMENTED OUT UNTIL SERIAL READ ISSUE IS SORTED #####
+data = ser.read(8) # read up to 32 bytes (set to 8 bytes) 
 
-complete = False ##### TEMPORARILY COMMENTED OUT UNTIL SERIAL READ ISSUE IS SORTED #####
+complete = False 
 while not complete:
     if data is not None and "OFF" in data:
       complete = True
     else:
       data = ser.read(8)
-
-#### Temporary fix until FarmBot adds back support for pyserial in Farmware ####
-# Send "ON" signal to initiate photo taking process
-#print("RootBotCamPiON RootBotCamPiON")  # make this print something unique (serial sends debugging text)
-# Wait for second pi to finish its tasks.
-#sleep(10)

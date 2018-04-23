@@ -14,11 +14,11 @@ ser = s.Serial("/dev/ttyAMA0", 115200, timeout=10) # Open port (was ttyS0), gave
 ser.write("RootCamONRootCamON".encode())
 
 # Check to see if the CameraPi has sent "OFF" to confirm photography complete
-data = ser.read(8) # read up to 32 bytes (set to 8 bytes) 
+data = ser.read(ser.inWaiting()) # read up to 32 bytes (set to 8 bytes) 
 
 complete = False 
 while not complete:
     if data is not None and "OFF" in data:
       complete = True
     else:
-      data = ser.read(8)
+      data = ser.read(ser.inWaiting())

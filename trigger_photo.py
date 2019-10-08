@@ -5,7 +5,7 @@ RootBot Farmware to send and recieve serial to/from 2nd raspberry pi
 """
 # Need this for sending serial data
 #import serial as s # Looks like FarmBot has removed serial again??? Switch to print statements 10/7/2019
-from time import sleep 
+#from time import sleep # Does not appear nececssary anymore
 
 # Open serial connection with second raspberry pi
 #ser = s.Serial("/dev/ttyAMA0", 115200, timeout=10) # Open port (was ttyS0), gave it a 10 sec timeout if not enough bytes read.

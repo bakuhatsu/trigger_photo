@@ -1,0 +1,12 @@
+{
+ "package": "trigger_photo",
+ "language": "python",
+ "author": "Sven Nelson",
+ "description": "Send trigger to second raspberry pi to start photo-taking sequence.",
+ "package_version": "1.1.7",
+ "farmbot_os_version_requirement": ">= 8.0.0",
+ "url": "https://raw.githubusercontent.com/bakuhatsu/farmware_manifests/master/manifest.json",
+ "zip": "https://github.com/bakuhatsu/trigger_photo/archive/master.zip",
+ "executable": "python",
+ "args": "trigger_photo-master/trigger_photo.py"
+}

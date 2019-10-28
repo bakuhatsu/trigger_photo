@@ -3,6 +3,7 @@
  "language": "python",
  "author": "Sven Nelson",
  "description": "Send trigger to second raspberry pi to start photo-taking sequence.",
+ "farmware_manifest_version": "2.0.0",
  "package_version": "1.1.7",
  "farmbot_os_version_requirement": ">= 8.0.0",
  "url": "https://raw.githubusercontent.com/bakuhatsu/trigger_photo/master/manifest.json",

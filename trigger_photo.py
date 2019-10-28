@@ -1,8 +1,12 @@
+#!/usr/bin/env python
+
 """
 Sven Nelson
 4/9/2018
 RootBot Farmware to send and recieve serial to/from 2nd raspberry pi
 """
+
+from farmware_tools import device
 # Need this for sending serial data
 import serial as s # Looks like FarmBot has removed serial again??? Switch to print statements 10/7/2019
 from time import sleep # Does not appear necessary anymore
